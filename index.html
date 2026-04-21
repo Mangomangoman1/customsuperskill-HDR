@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hailey Device Repair | Computer & Phone Repair in Idaho</title>
+<meta name="description" content="Fast, honest device repair in Hailey, Idaho. Screen replacement, battery service, water damage, mail-in repair statewide. Walk-ins welcome. (208) 720-5822">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0}
+  :root{
+    --ink:#0c0a09;
+    --charcoal:#1c1917;
+    --stone:#292524;
+    --amber:#f59e0b;
+    --amber-glow:#fbbf24;
+    --cream:#fafaf9;
+    --muted:#a8a29e;
+    --steel:#78716c;
+  }
+  html{scroll-behavior:smooth}
+  body{
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:var(--ink);
+    color:var(--cream);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--amber);color:var(--ink)}
+
+  /* NAV */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(12,10,9,0.92);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--stone);
+  }
+  .nav-inner{
+    max-width:1200px;margin:0 auto;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 24px;height:64px;
+  }
+  .nav-brand{
+    display:flex;align-items:center;gap:10px;
+    font-weight:800;letter-spacing:-0.02em;font-size:1.05rem;
+  }
+  .nav-brand svg{width:22px;height:22px;fill:var(--amber)}
+  .nav-links{display:flex;align-items:center;gap:32px}
+  .nav-links a{
+    font-size:0.875rem;font-weight:500;color:var(--muted);
+    transition:color .15s;
+  }
+  .nav-links a:hover{color:var(--cream)}
+  .nav-cta{
+    background:var(--amber);color:var(--ink);
+    padding:10px 20px;border-radius:4px;
+    font-size:0.875rem;font-weight:700;
+    transition:background .15s,transform .15s;
+  }
+  .nav-cta:hover{background:var(--amber-glow);transform:translateY(-1px)}
+  .nav-toggle{display:none;background:none;border:none;color:var(--cream);cursor:pointer}
+
+  /* HERO */
+  .hero{
+    min-height:100dvh;
+    display:flex;align-items:center;
+    padding:96px 24px 64px;
+    position:relative;overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1200px;margin:0 auto;width:100%;
+    display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
+  }
+  .hero-label{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;
+    color:var(--amber);margin-bottom:20px;
+  }
+  .hero-label .dot{
+    width:6px;height:6px;border-radius:50%;background:var(--amber);
+    animation:pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .hero h1{
+    font-size:clamp(2.5rem,5.5vw,4.2rem);
+    font-weight:800;line-height:1.05;letter-spacing:-0.03em;
+    margin-bottom:24px;
+  }
+  .hero h1 span{color:var(--amber)}
+  .hero p{
+    font-size:1.0625rem;color:var(--muted);
+    max-width:48ch;margin-bottom:32px;
+  }
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+  .btn-primary{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--amber);color:var(--ink);
+    padding:14px 28px;border-radius:4px;
+    font-weight:700;font-size:1rem;
+    transition:background .15s,transform .15s;
+  }
+  .btn-primary:hover{background:var(--amber-glow);transform:translateY(-1px)}
+  .btn-secondary{
+    display:inline-flex;align-items:center;gap:8px;
+    background:transparent;color:var(--cream);
+    border:1px solid var(--steel);padding:14px 28px;border-radius:4px;
+    font-weight:600;font-size:1rem;
+    transition:border-color .15s;
+  }
+  .btn-secondary:hover{border-color:var(--muted)}
+  .hero-meta{
+    margin-top:28px;display:flex;align-items:center;gap:8px;
+    font-size:0.875rem;color:var(--steel);
+  }
+  .hero-meta svg{width:16px;height:16px;fill:var(--amber)}
+
+  /* REPAIR TICKET */
+  .ticket-wrap{
+    display:flex;justify-content:center;
+    perspective:800px;
+  }
+  .ticket{
+    background:var(--charcoal);
+    border:1px solid var(--stone);
+    border-radius:8px;
+    padding:32px;
+    width:100%;max-width:380px;
+    position:relative;
+    box-shadow:0 24px 64px rgba(0,0,0,0.5);
+  }
+  .ticket::before{
+    content:"";position:absolute;top:0;left:24px;right:24px;
+    height:8px;background:repeating-linear-gradient(
+      90deg,transparent,transparent 4px,var(--stone) 4px,var(--stone) 8px
+    );
+    transform:translateY(-4px);
+  }
+  .ticket-header{
+    display:flex;align-items:center;justify-content:space-between;
+    margin-bottom:20px;padding-bottom:16px;
+    border-bottom:1px dashed var(--stone);
+  }
+  .ticket-header h3{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:0.75rem;font-weight:700;text-transform:uppercase;
+    letter-spacing:0.1em;color:var(--amber);
+  }
+  .ticket-stamp{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:0.625rem;font-weight:700;
+    color:var(--amber);border:1.5px solid var(--amber);
+    padding:3px 8px;border-radius:3px;transform:rotate(-8deg);
+    opacity:.9;
+  }
+  .ticket-field{
+    margin-bottom:14px;
+  }
+  .ticket-field label{
+    display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:0.625rem;font-weight:600;text-transform:uppercase;
+    letter-spacing:0.08em;color:var(--steel);margin-bottom:4px;
+  }
+  .ticket-field .value{
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:0.8125rem;color:var(--cream);
+    background:var(--ink);padding:8px 12px;border-radius:4px;
+    border:1px solid var(--stone);
+  }
+  .ticket-barcode{
+    margin-top:20px;height:32px;
+    background:repeating-linear-gradient(
+      90deg,var(--cream),var(--cream) 2px,transparent 2px,transparent 4px
+    );
+    opacity:.15;border-radius:2px;
+  }
+
+  /* SECTIONS */
+  .section{padding:96px 24px}
+  .section-inner{max-width:1200px;margin:0 auto}
+  .section-label{
+    font-size:0.75rem;font-weight:700;text-transform:uppercase;
+    letter-spacing:0.08em;color:var(--amber);margin-bottom:16px;
+  }
+  .section h2{
+    font-size:clamp(1.8rem,4vw,3rem);
+    font-weight:800;line-height:1.1;letter-spacing:-0.02em;
+    margin-bottom:48px;max-width:20ch;
+  }
+
+  /* SERVICES */
+  .services-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+    background:var(--stone);border-radius:8px;overflow:hidden;
+  }
+  .service-card{
+    background:var(--charcoal);padding:36px;
+    transition:background .2s;
+  }
+  .service-card:hover{background:var(--stone)}
+  .service-card .icon{
+    width:40px;height:40px;border-radius:4px;
+    background:rgba(245,158,11,0.1);display:flex;align-items:center;justify-content:center;
+    margin-bottom:20px;
+  }
+  .service-card .icon svg{width:20px;height:20px;stroke:var(--amber);stroke-width:1.5;fill:none}
+  .service-card h3{
+    font-size:1.0625rem;font-weight:700;margin-bottom:8px;
+  }
+  .service-card p{
+    font-size:0.9375rem;color:var(--muted);line-height:1.55;
+  }
+
+  /* TRUST */
+  .trust{background:var(--charcoal);border-top:1px solid var(--stone);border-bottom:1px solid var(--stone)}
+  .trust-stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:32px;
+    margin-bottom:64px;padding-bottom:48px;
+    border-bottom:1px solid var(--stone);
+  }
+  .stat .num{
+    font-size:2rem;font-weight:800;color:var(--amber);letter-spacing:-0.02em;
+  }
+  .stat .label{font-size:0.875rem;color:var(--muted);margin-top:4px}
+  .reviews-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  }
+  .review{
+    background:var(--ink);border:1px solid var(--stone);
+    border-radius:8px;padding:28px;
+  }
+  .review-stars{display:flex;gap:3px;margin-bottom:16px}
+  .review-stars svg{width:14px;height:14px;fill:var(--amber)}
+  .review p{font-size:0.9375rem;color:var(--muted);line-height:1.6;margin-bottom:20px}
+  .review .name{font-size:0.875rem;font-weight:600}
+  .review .loc{font-size:0.8125rem;color:var(--steel)}
+
+  /* MAIL IN */
+  .mail-card{
+    background:var(--charcoal);border:1px solid var(--stone);
+    border-radius:8px;padding:56px;
+    display:grid;grid-template-columns:1fr auto;gap:48px;align-items:center;
+  }
+  .mail-card h3{font-size:1.6rem;font-weight:800;margin-bottom:12px}
+  .mail-card p{color:var(--muted);max-width:48ch}
+  .mail-badge{
+    display:inline-flex;align-items:center;gap:6px;
+    font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;
+    color:var(--amber);border:1px solid rgba(245,158,11,0.25);
+    padding:5px 12px;border-radius:4px;margin-bottom:16px;
+  }
+
+  /* FOOTER */
+  .footer{
+    border-top:1px solid var(--stone);padding:64px 24px 32px;
+  }
+  .footer-inner{max-width:1200px;margin:0 auto}
+  .footer-grid{
+    display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:48px;
+  }
+  .footer-brand{display:flex;align-items:center;gap:10px;font-weight:800;margin-bottom:12px}
+  .footer-brand svg{width:18px;height:18px;fill:var(--amber)}
+  .footer-grid p,.footer-grid a{font-size:0.875rem;color:var(--muted);line-height:1.7}
+  .footer-grid a:hover{color:var(--cream)}
+  .footer-grid h4{
+    font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;
+    color:var(--steel);margin-bottom:16px;
+  }
+  .footer-bottom{
+    border-top:1px solid var(--stone);padding-top:24px;
+    font-size:0.8125rem;color:var(--steel);
+  }
+
+  /* MOBILE */
+  @media(max-width:768px){
+    .nav-links{display:none}
+    .nav-toggle{display:block}
+    .hero-inner{grid-template-columns:1fr;gap:48px}
+    .hero{padding-top:88px}
+    .services-grid{grid-template-columns:1fr}
+    .trust-stats{grid-template-columns:repeat(2,1fr)}
+    .reviews-grid{grid-template-columns:1fr}
+    .mail-card{grid-template-columns:1fr;padding:32px}
+    .footer-grid{grid-template-columns:1fr}
+    .ticket{max-width:100%}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">
+      <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84a.484.484 0 0 0-.48.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.488.488 0 0 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.27.41.48.41h3.84c.24 0 .44-.17.48-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+      Hailey Device Repair
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#mailin">Mail-In</a>
+      <a href="tel:+12087205822" class="nav-cta">(208) 720-5822</a>
+    </div>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-label"><span class="dot"></span> Open today — Hailey, Idaho</div>
+      <h1>Device broken?<br><span>We fix it.</span> No drama.</h1>
+      <p>Computer, phone, and tablet repair in the Wood River Valley. Most screen replacements done same day. Mail-in repair available statewide across Idaho.</p>
+      <div class="hero-actions">
+        <a href="tel:+12087205822" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call (208) 720-5822
+        </a>
+        <a href="#services" class="btn-secondary">See services</a>
+      </div>
+      <div class="hero-meta">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        Walk-ins welcome. No appointment needed.
+      </div>
+    </div>
+
+    <!-- DOMINANT OBJECT: Repair Ticket -->
+    <div class="ticket-wrap">
+      <div class="ticket">
+        <div class="ticket-header">
+          <h3>INTAKE #0421</h3>
+          <span class="ticket-stamp">RECEIVED</span>
+        </div>
+        <div class="ticket-field">
+          <label>Customer</label>
+          <div class="value">Walk-in — Hailey, ID</div>
+        </div>
+        <div class="ticket-field">
+          <label>Device</label>
+          <div class="value">iPhone 15 Pro — Screen replacement</div>
+        </div>
+        <div class="ticket-field">
+          <label>Status</label>
+          <div class="value" style="color:var(--amber)">In progress — Est. 30 min</div>
+        </div>
+        <div class="ticket-field">
+          <label>Technician</label>
+          <div class="value">Sam T.</div>
+        </div>
+        <div class="ticket-barcode"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-inner">
+    <p class="section-label">What we fix</p>
+    <h2>Most repairs done same day</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg></div>
+        <h3>Phone Repair</h3>
+        <p>Screen replacement, charging ports, buttons, and water damage for iPhone and Android.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg></div>
+        <h3>Computer Repair</h3>
+        <p>Laptops and desktops. RAM, SSD upgrades, virus removal, and OS troubleshooting.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M5 18v3m4-3v3m4-3v3m4-3v3M8 12V7a4 4 0 0 1 8 0v5"/></svg></div>
+        <h3>Battery Service</h3>
+        <p>Same-day battery replacements for most phone and laptop models.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+        <h3>Water Damage</h3>
+        <p>Professional cleaning and component-level drying. Honest assessment if it is fixable.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="10" ry="3"/><path d="M12 2v20"/></svg></div>
+        <h3>Data Recovery</h3>
+        <p>Dead drive? We recover photos, documents, and files. No fix, no fee policy.</p>
+      </div>
+      <div class="service-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+        <h3>Mail-In Repair</h3>
+        <p>Statewide Idaho service. Ship it in, we fix it, ship it back. Free return shipping over $100.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section class="section trust" id="reviews">
+  <div class="section-inner">
+    <div class="trust-stats">
+      <div class="stat"><div class="num">4.9</div><div class="label">Google rating</div></div>
+      <div class="stat"><div class="num">90-day</div><div class="label">Repair warranty</div></div>
+      <div class="stat"><div class="num">Same day</div><div class="label">Most screen fixes</div></div>
+      <div class="stat"><div class="num">No fix</div><div class="label">No fee policy</div></div>
+    </div>
+    <p class="section-label">Real reviews</p>
+    <h2 style="margin-bottom:40px">What people in Idaho say</h2>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p>"Cracked my iPhone screen skiing at Sun Valley. Dropped it off at lunch, picked it up fixed by 4. Honest price, no upsell."</p>
+        <div class="name">Margo T.</div>
+        <div class="loc">Ketchum, ID</div>
+      </div>
+      <div class="review">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p>"Mailed in a dead MacBook from Boise. Got a clear quote within 24 hours of delivery. Fixed and back in 3 days."</p>
+        <div class="name">Derek L.</div>
+        <div class="loc">Boise, ID</div>
+      </div>
+      <div class="review">
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p>"Third time using them. My kid's iPad, my laptop, now my husband's phone. Consistent, fast, fair."</p>
+        <div class="name">Sarah K.</div>
+        <div class="loc">Hailey, ID</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIL IN -->
+<section class="section" id="mailin">
+  <div class="section-inner">
+    <div class="mail-card">
+      <div>
+        <div class="mail-badge">Statewide Idaho</div>
+        <h3>Not near Hailey? Mail it in.</h3>
+        <p>We serve the entire state of Idaho with mail-in repair. Free return shipping on repairs over $100. Same honest diagnostics, same warranty, just a different way to get here.</p>
+        <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap">
+          <a href="mailto:repair@haileyrepair.com" class="btn-primary">Start a mail-in repair</a>
+          <a href="tel:+12087205822" class="btn-secondary">Call first</a>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center">
+        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="1" opacity="0.3">
+          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+          <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+          <line x1="12" y1="22.08" x2="12" y2="12"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58a.49.49 0 0 0 .12-.61l-1.92-3.32a.488.488 0 0 0-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54a.484.484 0 0 0-.48-.41h-3.84a.484.484 0 0 0-.48.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96a.488.488 0 0 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58a.49.49 0 0 0-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.27.41.48.41h3.84c.24 0 .44-.17.48-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+          Hailey Device Repair
+        </div>
+        <p>Fast, honest device repair in Hailey, Idaho. Walk-ins welcome. Statewide mail-in service available.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="tel:+12087205822">(208) 720-5822</a></p>
+        <p><a href="mailto:repair@haileyrepair.com">repair@haileyrepair.com</a></p>
+        <p>Hailey, Idaho 83333</p>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <p><a href="#">Privacy Policy</a></p>
+        <p><a href="#">Terms of Service</a></p>
+        <p><a href="#">Warranty & Returns</a></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Hailey Device Repair. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

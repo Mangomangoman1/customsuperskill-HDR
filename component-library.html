@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hailey Device Repair — Component Library</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0}
+  :root{
+    --ink:#0c0a09;--charcoal:#1c1917;--stone:#292524;
+    --amber:#f59e0b;--amber-glow:#fbbf24;--cream:#fafaf9;
+    --muted:#a8a29e;--steel:#78716c;
+  }
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--ink);color:var(--cream);line-height:1.65;padding:48px 24px}
+  .container{max-width:1200px;margin:0 auto}
+  h2{font-size:1.25rem;font-weight:700;margin:48px 0 24px;padding-bottom:12px;border-bottom:1px solid var(--stone)}
+  .row{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px;align-items:flex-start}
+
+  /* Buttons */
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:var(--ink);padding:14px 28px;border-radius:4px;font-weight:700;font-size:1rem;transition:background .15s,transform .15s}
+  .btn-primary:hover{background:var(--amber-glow);transform:translateY(-1px)}
+  .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--cream);border:1px solid var(--steel);padding:14px 28px;border-radius:4px;font-weight:600;font-size:1rem;transition:border-color .15s}
+  .btn-secondary:hover{border-color:var(--muted)}
+
+  /* Card */
+  .card{background:var(--charcoal);border:1px solid var(--stone);border-radius:8px;padding:32px;max-width:320px}
+  .card h3{font-size:1.0625rem;font-weight:700;margin-bottom:8px}
+  .card p{font-size:0.9375rem;color:var(--muted);line-height:1.55}
+
+  /* Proof module */
+  .proof{background:var(--charcoal);border-left:3px solid var(--amber);padding:24px 28px;max-width:400px}
+  .proof p{font-size:0.9375rem;color:var(--muted);line-height:1.6;margin-bottom:12px}
+  .proof .name{font-size:0.875rem;font-weight:600}
+
+  /* Ticket */
+  .ticket{background:var(--charcoal);border:1px solid var(--stone);border-radius:8px;padding:32px;max-width:360px;position:relative}
+  .ticket::before{content:"";position:absolute;top:0;left:24px;right:24px;height:8px;background:repeating-linear-gradient(90deg,transparent,transparent 4px,var(--stone) 4px,var(--stone) 8px);transform:translateY(-4px)}
+  .ticket-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:1px dashed var(--stone)}
+  .ticket-header h3{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--amber)}
+  .ticket-stamp{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.625rem;font-weight:700;color:var(--amber);border:1.5px solid var(--amber);padding:3px 8px;border-radius:3px;transform:rotate(-8deg);opacity:.9}
+  .ticket-field{margin-bottom:14px}
+  .ticket-field label{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.625rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--steel);margin-bottom:4px}
+  .ticket-field .value{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.8125rem;color:var(--cream);background:var(--ink);padding:8px 12px;border-radius:4px;border:1px solid var(--stone)}
+
+  /* Nav */
+  .nav{background:var(--charcoal);border-bottom:1px solid var(--stone);padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+  .nav-brand{display:flex;align-items:center;gap:10px;font-weight:800}
+  .nav-cta{background:var(--amber);color:var(--ink);padding:10px 20px;border-radius:4px;font-size:0.875rem;font-weight:700}
+
+  /* Badge */
+  .badge{display:inline-flex;align-items:center;gap:6px;font-size:0.6875rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--amber);border:1px solid rgba(245,158,11,0.25);padding:5px 12px;border-radius:4px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h2>01. Buttons</h2>
+<div class="row">
+  <a href="#" class="btn-primary">Primary CTA</a>
+  <a href="#" class="btn-secondary">Secondary</a>
+</div>
+
+<h2>02. Card</h2>
+<div class="row">
+  <div class="card">
+    <h3>Phone Repair</h3>
+    <p>Screen replacement, charging ports, buttons, and water damage for iPhone and Android.</p>
+  </div>
+</div>
+
+<h2>03. Proof Module</h2>
+<div class="row">
+  <div class="proof">
+    <p>"Cracked my iPhone screen skiing at Sun Valley. Dropped it off at lunch, picked it up fixed by 4."</p>
+    <div class="name">Margo T. — Ketchum, ID</div>
+  </div>
+</div>
+
+<h2>04. Hero Object (Repair Ticket)</h2>
+<div class="row">
+  <div class="ticket">
+    <div class="ticket-header">
+      <h3>INTAKE #0421</h3>
+      <span class="ticket-stamp">RECEIVED</span>
+    </div>
+    <div class="ticket-field">
+      <label>Customer</label>
+      <div class="value">Walk-in — Hailey, ID</div>
+    </div>
+    <div class="ticket-field">
+      <label>Device</label>
+      <div class="value">iPhone 15 Pro — Screen replacement</div>
+    </div>
+    <div class="ticket-field">
+      <label>Status</label>
+      <div class="value" style="color:var(--amber)">In progress — Est. 30 min</div>
+    </div>
+  </div>
+</div>
+
+<h2>05. Navigation</h2>
+<div class="row" style="width:100%">
+  <div class="nav" style="width:100%">
+    <div class="nav-brand">Hailey Device Repair</div>
+    <div class="nav-cta">(208) 720-5822</div>
+  </div>
+</div>
+
+<h2>06. Badge</h2>
+<div class="row">
+  <span class="badge">Statewide Idaho</span>
+</div>
+
+</div>
+</body>
+</html>

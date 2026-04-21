@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hailey Device Repair — Preview</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0}
+  :root{
+    --ink:#0c0a09;--charcoal:#1c1917;--stone:#292524;
+    --amber:#f59e0b;--amber-glow:#fbbf24;--cream:#fafaf9;
+    --muted:#a8a29e;--steel:#78716c;
+  }
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--ink);color:var(--cream);line-height:1.65;min-height:100dvh;display:flex;align-items:center;padding:48px 24px}
+  .inner{max-width:1200px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .label{display:inline-flex;align-items:center;gap:8px;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--amber);margin-bottom:20px}
+  .label .dot{width:6px;height:6px;border-radius:50%;background:var(--amber);animation:pulse 2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  h1{font-size:clamp(2.5rem,5.5vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:-0.03em;margin-bottom:24px}
+  h1 span{color:var(--amber)}
+  p{font-size:1.0625rem;color:var(--muted);max-width:48ch;margin-bottom:32px}
+  .actions{display:flex;gap:16px;flex-wrap:wrap}
+  .btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:var(--ink);padding:14px 28px;border-radius:4px;font-weight:700;font-size:1rem}
+  .btn-secondary{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--cream);border:1px solid var(--steel);padding:14px 28px;border-radius:4px;font-weight:600;font-size:1rem}
+  .ticket{background:var(--charcoal);border:1px solid var(--stone);border-radius:8px;padding:32px;width:100%;max-width:380px;position:relative;box-shadow:0 24px 64px rgba(0,0,0,0.5);margin:0 auto}
+  .ticket::before{content:"";position:absolute;top:0;left:24px;right:24px;height:8px;background:repeating-linear-gradient(90deg,transparent,transparent 4px,var(--stone) 4px,var(--stone) 8px);transform:translateY(-4px)}
+  .ticket-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;padding-bottom:16px;border-bottom:1px dashed var(--stone)}
+  .ticket-header h3{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--amber)}
+  .ticket-stamp{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.625rem;font-weight:700;color:var(--amber);border:1.5px solid var(--amber);padding:3px 8px;border-radius:3px;transform:rotate(-8deg);opacity:.9}
+  .ticket-field{margin-bottom:14px}
+  .ticket-field label{display:block;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.625rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--steel);margin-bottom:4px}
+  .ticket-field .value{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:0.8125rem;color:var(--cream);background:var(--ink);padding:8px 12px;border-radius:4px;border:1px solid var(--stone)}
+  .ticket-barcode{margin-top:20px;height:32px;background:repeating-linear-gradient(90deg,var(--cream),var(--cream) 2px,transparent 2px,transparent 4px);opacity:.15;border-radius:2px}
+  @media(max-width:768px){.inner{grid-template-columns:1fr}.ticket{max-width:100%}}
+</style>
+</head>
+<body>
+  <div class="inner">
+    <div>
+      <div class="label"><span class="dot"></span> Open today — Hailey, Idaho</div>
+      <h1>Device broken?<br><span>We fix it.</span> No drama.</h1>
+      <p>Computer, phone, and tablet repair in the Wood River Valley. Most screen replacements done same day.</p>
+      <div class="actions">
+        <a href="tel:+12087205822" class="btn-primary">Call (208) 720-5822</a>
+        <a href="#" class="btn-secondary">See services</a>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <div class="ticket">
+        <div class="ticket-header">
+          <h3>INTAKE #0421</h3>
+          <span class="ticket-stamp">RECEIVED</span>
+        </div>
+        <div class="ticket-field">
+          <label>Customer</label>
+          <div class="value">Walk-in — Hailey, ID</div>
+        </div>
+        <div class="ticket-field">
+          <label>Device</label>
+          <div class="value">iPhone 15 Pro — Screen replacement</div>
+        </div>
+        <div class="ticket-field">
+          <label>Status</label>
+          <div class="value" style="color:var(--amber)">In progress — Est. 30 min</div>
+        </div>
+        <div class="ticket-barcode"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

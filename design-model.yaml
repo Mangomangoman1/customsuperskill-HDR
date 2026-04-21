@@ -1,0 +1,163 @@
+name: "Hailey Device Repair"
+page_intent: landing-page
+brand_truth:
+  source_type: described
+  confidence: high
+  notes:
+    - "Owner-operated repair shop in Hailey, Idaho"
+    - "Sam Torres, founder, ~6 months sober, lives in sober home"
+    - "Honest pricing, no upsell, no fix no fee"
+    - "Walk-ins welcome, most screen replacements same day"
+    - "Statewide mail-in repair targeting Idaho service deserts"
+    - "Cautious on high-risk repairs, no microsoldering setup yet"
+    - "90-day warranty on all repairs"
+philosophy: |
+  A repair shop should feel like a bench you can trust, not a tech store 
+  trying to sell you something. The design is direct, unpretentious, and 
+  confident — like the work itself. No glassmorphism, no SaaS hero layouts. 
+  Dark industrial surfaces, warm amber accents, and typography that punches.
+primary_mode: dark
+brand_domain: electronics repair / local service
+brand_type: content-rich
+sources_used:
+  - source: "hailey-web-co"
+    purpose: "local conversion guardrails"
+  - source: "frontend-design"
+    purpose: "anti-generic pressure"
+  - source: "impeccable"
+    purpose: "composition polish"
+  - source: "color-expert"
+    purpose: "palette sanity"
+
+primitives:
+  colors:
+    ink: "#0c0a09"
+    charcoal: "#1c1917"
+    stone: "#292524"
+    amber: "#f59e0b"
+    amber_glow: "#fbbf24"
+    cream: "#fafaf9"
+    muted: "#a8a29e"
+    steel: "#78716c"
+  spacing:
+    - 4px
+    - 8px
+    - 12px
+    - 16px
+    - 24px
+    - 32px
+    - 48px
+    - 64px
+    - 96px
+    - 128px
+  radii:
+    - 0px
+    - 4px
+    - 8px
+    - 12px
+
+tokens:
+  colors:
+    background: "#0c0a09"
+    surface1: "#1c1917"
+    surface2: "#292524"
+    surface3: "#44403c"
+    border: "#44403c"
+    border_visible: "#57534e"
+    text1: "#fafaf9"
+    text2: "#e7e5e4"
+    text3: "#a8a29e"
+    text4: "#78716c"
+    accent: "#f59e0b"
+    accent_subtle: "#78350f"
+    accent_hover: "#fbbf24"
+    success: "#22c55e"
+    warning: "#f59e0b"
+    error: "#ef4444"
+  typography:
+    display:
+      family: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+      size: "clamp(2.5rem, 6vw, 4.5rem)"
+      weight: 800
+      line_height: 1.05
+      letter_spacing: "-0.03em"
+    body:
+      family: "system-ui, -apple-system, Segoe UI, Roboto, sans-serif"
+      size: "1.0625rem"
+      weight: 400
+      line_height: 1.65
+    mono:
+      family: "ui-monospace, SFMono-Regular, Menlo, Monaco, monospace"
+      size: "0.875rem"
+      weight: 500
+      line_height: 1.5
+  spacing:
+    section: "96px"
+    gap: "24px"
+    container: "1200px"
+  radii:
+    button: "4px"
+    card: "8px"
+    badge: "4px"
+  elevation:
+    none: "none"
+    low: "0 4px 24px rgba(0,0,0,0.4)"
+  motion:
+    transition: "0.2s ease-out"
+    hover: "0.15s ease-out"
+  hero_stage:
+    background: "#0c0a09"
+    text: "#fafaf9"
+    accent_element: "#f59e0b"
+  iconography:
+    style: "outline"
+    stroke_width: "1.5"
+    size: "20px"
+
+components:
+  button_primary:
+    background: "#f59e0b"
+    color: "#0c0a09"
+    padding: "14px 28px"
+    radius: "4px"
+    font_weight: 700
+    hover: "background:#fbbf24; transform:translateY(-1px)"
+  button_secondary:
+    background: "transparent"
+    color: "#fafaf9"
+    border: "1px solid #57534e"
+    padding: "14px 28px"
+    radius: "4px"
+    font_weight: 600
+    hover: "border-color:#a8a29e"
+  card:
+    background: "#1c1917"
+    border: "1px solid #292524"
+    radius: "8px"
+    padding: "32px"
+  nav:
+    background: "rgba(12,10,9,0.9)"
+    backdrop_blur: "12px"
+    border_bottom: "1px solid #292524"
+    height: "64px"
+  proof_module:
+    background: "#1c1917"
+    border_left: "3px solid #f59e0b"
+    padding: "24px 28px"
+  hero_object:
+    type: "repair_ticket"
+    description: "A stylized work order / intake slip with torn edges, monospace type, and amber stamp mark"
+
+hero_direction:
+  dominant_object: "repair intake ticket"
+  composition_type: "single-object"
+  originality_test: pass
+  memorable_thing: |
+    The hero is built around a dark repair bench work order — torn edges, 
+    monospace fields, and an amber 'RECEIVED' stamp. It is unmistakably a 
+    repair shop, not a SaaS product.
+
+output_targets:
+  preview_required: true
+  component_library_required: true
+  landing_page_required: true
