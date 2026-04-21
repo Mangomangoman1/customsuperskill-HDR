@@ -1,0 +1,815 @@
+/* ============================================
+   HAILEY DEVICE REPAIR — Design System
+   Built with design-supervisor (local-smb-stack)
+   ============================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+:root {
+  --ink: #0c0a09;
+  --charcoal: #1c1917;
+  --stone: #292524;
+  --stone-light: #44403c;
+  --amber: #f59e0b;
+  --amber-glow: #fbbf24;
+  --amber-subtle: #78350f;
+  --cream: #fafaf9;
+  --muted: #a8a29e;
+  --steel: #78716c;
+  --success: #22c55e;
+  --error: #ef4444;
+
+  --font-sans: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 2rem;
+
+  --shadow-sm: 0 4px 24px rgba(0,0,0,0.3);
+  --shadow-md: 0 12px 40px rgba(0,0,0,0.4);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,0.5);
+
+  --transition: 0.2s ease-out;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--ink);
+  color: var(--cream);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+::selection { background: var(--amber); color: var(--ink); }
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  background: rgba(12,10,9,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--stone);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 64px;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  font-size: 1.05rem;
+}
+
+.nav-brand svg {
+  width: 22px;
+  height: 22px;
+  fill: var(--amber);
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color var(--transition);
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--cream);
+}
+
+.nav-cta {
+  background: var(--amber);
+  color: var(--ink);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.875rem;
+  font-weight: 700;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.nav-cta:hover {
+  background: var(--amber-glow);
+  transform: translateY(-1px);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--cream);
+  cursor: pointer;
+}
+
+/* Mobile nav */
+.nav-links-mobile {
+  display: none;
+  position: absolute;
+  top: 64px;
+  left: 0;
+  right: 0;
+  background: var(--charcoal);
+  border-bottom: 1px solid var(--stone);
+  padding: 16px 24px;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.nav-links-mobile a {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--muted);
+  padding: 8px 0;
+}
+
+.nav-links-mobile .nav-cta {
+  text-align: center;
+  margin-top: 8px;
+}
+
+.nav-links-mobile.show {
+  display: flex;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.display {
+  font-size: clamp(2.5rem, 5.5vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.heading {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.heading-sm {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.body {
+  font-size: 1.0625rem;
+  color: var(--muted);
+  max-width: 55ch;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+}
+
+.label .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--amber);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background var(--transition), transform var(--transition), border-color var(--transition);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.btn-primary {
+  background: var(--amber);
+  color: var(--ink);
+}
+
+.btn-primary:hover {
+  background: var(--amber-glow);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid var(--steel);
+}
+
+.btn-secondary:hover {
+  border-color: var(--muted);
+}
+
+.btn-sm {
+  padding: 10px 20px;
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   CARDS & SURFACES
+   ============================================ */
+.card {
+  background: var(--charcoal);
+  border: 1px solid var(--stone);
+  border-radius: var(--radius-md);
+  padding: 32px;
+}
+
+.card-hover:hover {
+  background: var(--stone);
+  transition: background var(--transition);
+}
+
+.proof-module {
+  background: var(--charcoal);
+  border-left: 3px solid var(--amber);
+  padding: 24px 28px;
+}
+
+/* ============================================
+   TICKET COMPONENT (Hero Object)
+   ============================================ */
+.ticket {
+  background: var(--charcoal);
+  border: 1px solid var(--stone);
+  border-radius: var(--radius-md);
+  padding: 32px;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+}
+
+.ticket::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 24px;
+  right: 24px;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg, transparent, transparent 4px, var(--stone) 4px, var(--stone) 8px
+  );
+  transform: translateY(-4px);
+}
+
+.ticket-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--stone);
+}
+
+.ticket-header h3 {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--amber);
+}
+
+.ticket-stamp {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  color: var(--amber);
+  border: 1.5px solid var(--amber);
+  padding: 3px 8px;
+  border-radius: 3px;
+  transform: rotate(-8deg);
+  opacity: 0.9;
+}
+
+.ticket-field {
+  margin-bottom: 14px;
+}
+
+.ticket-field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--steel);
+  margin-bottom: 4px;
+}
+
+.ticket-field .value {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--cream);
+  background: var(--ink);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--stone);
+}
+
+.ticket-barcode {
+  margin-top: 20px;
+  height: 32px;
+  background: repeating-linear-gradient(
+    90deg, var(--cream), var(--cream) 2px, transparent 2px, transparent 4px
+  );
+  opacity: 0.15;
+  border-radius: 2px;
+}
+
+/* ============================================
+   BADGE
+   ============================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--amber);
+  border: 1px solid rgba(245,158,11,0.25);
+  padding: 5px 12px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================
+   SECTIONS
+   ============================================ */
+.section {
+  padding: 96px 24px;
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-dark {
+  background: var(--charcoal);
+  border-top: 1px solid var(--stone);
+  border-bottom: 1px solid var(--stone);
+}
+
+/* ============================================
+   GRIDS
+   ============================================ */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+/* ============================================
+   STATS
+   ============================================ */
+.stat .num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--amber);
+  letter-spacing: -0.02em;
+}
+
+.stat .label {
+  font-size: 0.875rem;
+  color: var(--muted);
+  margin-top: 4px;
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 400;
+}
+
+/* ============================================
+   REVIEWS
+   ============================================ */
+.review {
+  background: var(--ink);
+  border: 1px solid var(--stone);
+  border-radius: var(--radius-md);
+  padding: 28px;
+}
+
+.review-stars {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 16px;
+}
+
+.review-stars svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--amber);
+}
+
+.review p {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.review .name {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.review .loc {
+  font-size: 0.8125rem;
+  color: var(--steel);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  border-top: 1px solid var(--stone);
+  padding: 64px 24px 32px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.footer-brand svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--amber);
+  flex-shrink: 0;
+}
+
+.footer-grid p,
+.footer-grid a {
+  font-size: 0.875rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.footer-grid a:hover {
+  color: var(--cream);
+}
+
+.footer-grid h4 {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--steel);
+  margin-bottom: 16px;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--stone);
+  padding-top: 24px;
+  font-size: 0.8125rem;
+  color: var(--steel);
+}
+
+/* ============================================
+   SERVICE ICON
+   ============================================ */
+.service-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: rgba(245,158,11,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.service-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--amber);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+/* ============================================
+   TIMELINE (for SOS page)
+   ============================================ */
+.timeline {
+  position: relative;
+  padding-left: 32px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--stone);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 32px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -28px;
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--charcoal);
+  border: 2px solid var(--amber);
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-item h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.timeline-item p {
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+/* ============================================
+   SYMPTOM DECODER (for SOS page)
+   ============================================ */
+.symptom-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.symptom-card {
+  background: var(--charcoal);
+  border: 1px solid var(--stone);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  cursor: pointer;
+  transition: border-color var(--transition), background var(--transition);
+}
+
+.symptom-card:hover {
+  border-color: var(--stone-light);
+  background: var(--stone);
+}
+
+.symptom-card h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.symptom-card p {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+.symptom-card .urgency {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+}
+
+.urgency-high {
+  background: rgba(239,68,68,0.15);
+  color: var(--error);
+}
+
+.urgency-medium {
+  background: rgba(245,158,11,0.15);
+  color: var(--amber);
+}
+
+/* ============================================
+   PRICING TABLE
+   ============================================ */
+.pricing-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--stone);
+  align-items: center;
+}
+
+.pricing-row.header {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--steel);
+  padding-bottom: 12px;
+}
+
+.pricing-row .service {
+  font-weight: 600;
+}
+
+.pricing-row .price {
+  font-family: var(--font-mono);
+  color: var(--amber);
+  font-weight: 700;
+}
+
+.pricing-row .time {
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+/* ============================================
+   MAIL-IN FORM ELEMENTS
+   ============================================ */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--ink);
+  border: 1px solid var(--stone);
+  border-radius: var(--radius-sm);
+  color: var(--cream);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: border-color var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--amber);
+}
+
+.form-group input::placeholder {
+  color: var(--steel);
+}
+
+/* ============================================
+   UTILITY
+   ============================================ */
+.text-amber { color: var(--amber); }
+.text-muted { color: var(--muted); }
+.text-steel { color: var(--steel); }
+.text-cream { color: var(--cream); }
+
+.mb-4 { margin-bottom: 4px; }
+.mb-8 { margin-bottom: 8px; }
+.mb-12 { margin-bottom: 12px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-32 { margin-bottom: 32px; }
+.mb-48 { margin-bottom: 48px; }
+
+.mt-24 { margin-top: 24px; }
+
+.max-w-ch { max-width: 55ch; }
+.max-w-ch-lg { max-width: 65ch; }
+
+.flex { display: flex; }
+.flex-wrap { flex-wrap: wrap; }
+.gap-12 { gap: 12px; }
+.gap-16 { gap: 16px; }
+.gap-24 { gap: 24px; }
+
+/* ============================================
+   MOBILE
+   ============================================ */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: block; }
+
+  .section { padding: 64px 20px; }
+
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .symptom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pricing-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .pricing-row.header {
+    display: none;
+  }
+
+  .pricing-row .price,
+  .pricing-row .time {
+    font-size: 0.875rem;
+  }
+}
